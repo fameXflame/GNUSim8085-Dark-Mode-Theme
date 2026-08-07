@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GNUSim8085 - Dark Theme Settings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0f0f17;
+      --card-bg: rgba(30, 30, 46, 0.75);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --accent-blue: #89b4fa;
+      --accent-purple: #cba6f7;
+      --accent-green: #a6e3a1;
+      --accent-red: #f38ba8;
+      --accent-orange: #fab387;
+      --text-main: #cdd6f4;
+      --text-muted: #9399b2;
+      --glass-blur: blur(16px);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: radial-gradient(circle at 15% 15%, #181825 0%, #0f0f17 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 2.5rem;
+      overflow-x: hidden;
+    }
+
+    /* Ambient Background Glow */
+    .bg-glow-1 {
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(137, 180, 250, 0.15) 0%, rgba(0,0,0,0) 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bg-glow-2 {
+      position: absolute;
+      bottom: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(203, 166, 247, 0.12) 0%, rgba(0,0,0,0) 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header Bar */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      background: var(--card-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      padding: 1.25rem 2rem;
+      border-radius: 20px;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: #0f0f17;
+      box-shadow: 0 4px 15px rgba(137, 180, 250, 0.4);
+    }
+
+    .brand-text h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #ffffff, var(--text-main));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-text p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(166, 227, 161, 0.1);
+      border: 1px solid rgba(166, 227, 161, 0.3);
+      color: var(--accent-green);
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent-green);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(166, 227, 161, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(166, 227, 161, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(166, 227, 161, 0); }
+    }
+
+    .btn-launch {
+      background: linear-gradient(135deg, var(--accent-blue), #74c7ec);
+      color: #11111b;
+      border: none;
+      padding: 0.75rem 1.4rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-radius: 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 20px rgba(137, 180, 250, 0.35);
+    }
+
+    .btn-launch:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(137, 180, 250, 0.5);
+    }
+
+    .btn-launch-fs {
+      background: linear-gradient(135deg, var(--accent-purple), #f38ba8);
+      color: #11111b;
+      border: none;
+      padding: 0.75rem 1.4rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-radius: 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 20px rgba(203, 166, 247, 0.35);
+    }
+
+    .btn-launch-fs:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(203, 166, 247, 0.5);
+    }
+
+    /* Grid Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Settings Tile Cards */
+    .tile-card {
+      background: var(--card-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 1.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .tile-card:hover {
+      border-color: rgba(137, 180, 250, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transform: translateY(-3px);
+    }
+
+    .tile-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .tile-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .tile-icon.theme { background: rgba(137, 180, 250, 0.15); color: var(--accent-blue); }
+    .tile-icon.editor { background: rgba(203, 166, 247, 0.15); color: var(--accent-purple); }
+    .tile-icon.sim { background: rgba(250, 179, 135, 0.15); color: var(--accent-orange); }
+
+    .tile-title h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .tile-title p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Form & Controls */
+    .option-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .option-group:last-child {
+      margin-bottom: 0;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    /* Theme Option Pills */
+    .theme-picker {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    .theme-option {
+      background: rgba(17, 17, 27, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: all 0.2s ease;
+    }
+
+    .theme-option:hover {
+      background: rgba(49, 50, 68, 0.8);
+      border-color: var(--accent-blue);
+    }
+
+    .theme-option.active {
+      background: rgba(137, 180, 250, 0.15);
+      border-color: var(--accent-blue);
+    }
+
+    .theme-preview {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .preview-dark { background: #1e1e2e; }
+    .preview-oled { background: #000000; }
+    .preview-cyber { background: #1a0933; }
+    .preview-light { background: #e6e9ef; }
+
+    .theme-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    /* Select and Input styling */
+    select, input[type="text"] {
+      width: 100%;
+      background: rgba(17, 17, 27, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    select:focus, input[type="text"]:focus {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(137, 180, 250, 0.2);
+    }
+
+    /* Range slider */
+    .range-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    input[type="range"] {
+      flex: 1;
+      accent-color: var(--accent-blue);
+      cursor: pointer;
+    }
+
+    .range-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      background: rgba(137, 180, 250, 0.15);
+      color: var(--accent-blue);
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+
+    /* Toggle Switches */
+    .toggle-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 46px;
+      height: 24px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #313244;
+      transition: .3s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: var(--accent-blue);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(22px);
+    }
+
+    /* Quick Opcode Reference Tile */
+    .ref-tile {
+      background: var(--card-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 1.75rem;
+    }
+
+    .search-box {
+      margin-bottom: 1.25rem;
+    }
+
+    .opcodes-table-wrapper {
+      max-height: 240px;
+      overflow-y: auto;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+
+    th {
+      background: rgba(24, 24, 37, 0.9);
+      color: var(--accent-blue);
+      padding: 0.75rem 1rem;
+      position: sticky;
+      top: 0;
+      font-weight: 700;
+    }
+
+    td {
+      padding: 0.65rem 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    tr:hover {
+      background: rgba(137, 180, 250, 0.08);
+    }
+
+    /* Notification toast */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: rgba(30, 30, 46, 0.95);
+      border: 1px solid var(--accent-blue);
+      color: var(--text-main);
+      padding: 1rem 1.5rem;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 100;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+
+  <div class="container">
+    <!-- Header Tile -->
+    <header>
+      <div class="brand">
+        <div class="brand-icon">85</div>
+        <div class="brand-text">
+          <h1>GNUSim8085 Dark Edition</h1>
+          <p>Top Settings Option Tile & Configuration Dashboard</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          Dark Mode Enabled
+        </div>
+        <button class="btn-launch" onclick="launchApp(false)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          Launch Dark
+        </button>
+        <button class="btn-launch-fs" onclick="launchApp(true)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+          Full Screen Mode
+        </button>
+      </div>
+    </header>
+
+    <!-- Settings Grid -->
+    <div class="grid">
+      <!-- Theme Selection Tile -->
+      <div class="tile-card">
+        <div class="tile-header">
+          <div class="tile-icon theme">🎨</div>
+          <div class="tile-title">
+            <h2>Theme Mode Tile</h2>
+            <p>Select visual color theme for GNUSim8085</p>
+          </div>
+        </div>
+        <div class="option-group">
+          <label>Theme Style</label>
+          <div class="theme-picker">
+            <div class="theme-option active" onclick="selectTheme('mocha', this)">
+              <div class="theme-preview preview-dark"></div>
+              <div class="theme-name">Catppuccin Dark</div>
+            </div>
+            <div class="theme-option" onclick="selectTheme('oled', this)">
+              <div class="theme-preview preview-oled"></div>
+              <div class="theme-name">Midnight OLED</div>
+            </div>
+            <div class="theme-option" onclick="selectTheme('cyber', this)">
+              <div class="theme-preview preview-cyber"></div>
+              <div class="theme-name">Cyberpunk Neon</div>
+            </div>
+            <div class="theme-option" onclick="selectTheme('light', this)">
+              <div class="theme-preview preview-light"></div>
+              <div class="theme-name">Classic Light</div>
+            </div>
+          </div>
+        </div>
+        <div class="option-group" style="margin-top: 1rem;">
+          <div class="toggle-row">
+            <div>
+              <label style="margin:0;">Client-Side Decorator (GTK CSD)</label>
+              <p style="font-size:0.75rem; color:var(--text-muted);">Enable sleek dark headerbars</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="csdToggle" checked onchange="saveSettings()">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Assembly Editor Tile -->
+      <div class="tile-card">
+        <div class="tile-header">
+          <div class="tile-icon editor">⚡</div>
+          <div class="tile-title">
+            <h2>Code Editor Tile</h2>
+            <p>Assembly syntax highlighting & font settings</p>
+          </div>
+        </div>
+        <div class="option-group">
+          <label for="syntaxScheme">Syntax Color Palette</label>
+          <select id="syntaxScheme" onchange="saveSettings()">
+            <option value="classic">Dark Palette (default)</option>
+            <option value="dark">Catppuccin Mocha Dark</option>
+            <option value="monokai">Monokai Dark</option>
+          </select>
+        </div>
+        <div class="option-group">
+          <label>Editor Font Size</label>
+          <div class="range-container">
+            <input type="range" id="fontSizeRange" min="11" max="24" value="14" oninput="updateFontSize(this.value)">
+            <span class="range-val" id="fontSizeVal">14px</span>
+          </div>
+        </div>
+        <div class="option-group">
+          <div class="toggle-row">
+            <div>
+              <label style="margin:0;">Show Line Numbers</label>
+              <p style="font-size:0.75rem; color:var(--text-muted);">Highlight code line numbers in dark theme</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="lineNumToggle" checked onchange="saveSettings()">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simulator Options Tile -->
+      <div class="tile-card">
+        <div class="tile-header">
+          <div class="tile-icon sim">⚙️</div>
+          <div class="tile-title">
+            <h2>8085 Execution & Screen Tile</h2>
+            <p>Full screen, execution speed & memory settings</p>
+          </div>
+        </div>
+        <div class="option-group">
+          <div class="toggle-row">
+            <div>
+              <label style="margin:0;">Launch in Full Screen Mode</label>
+              <p style="font-size:0.75rem; color:var(--text-muted);">Automatically maximize simulator window on startup</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="fullScreenToggle" checked onchange="saveSettings()">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        <div class="option-group">
+          <label for="startAddress">Default Starting Address</label>
+          <input type="text" id="startAddress" value="4200H" placeholder="e.g. 4200H" onchange="saveSettings()">
+        </div>
+        <div class="option-group">
+          <div class="toggle-row">
+            <div>
+              <label style="margin:0;">Highlight Current Line</label>
+              <p style="font-size:0.75rem; color:var(--text-muted);">Highlight active opcode during step execution</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="highlightToggle" checked onchange="saveSettings()">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        <div class="option-group" style="margin-top: 1rem;">
+          <button class="btn-launch" style="width:100%; justify-content:center; background:#313244; color:var(--text-main); border:1px solid #45475a;" onclick="saveSettings(true)">
+            💾 Save All Settings
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8085 Quick Reference Tile -->
+    <div class="ref-tile">
+      <div class="tile-header">
+        <div class="tile-icon sim" style="background:rgba(166,227,161,0.15); color:var(--accent-green);">📚</div>
+        <div class="tile-title">
+          <h2>8085 Instruction Set Quick Reference</h2>
+          <p>Search opcodes, bytes, and descriptions</p>
+        </div>
+      </div>
+      <div class="search-box">
+        <input type="text" id="opcodeSearch" placeholder="Search instruction (e.g., MOV, MVI, LXI, JMP, CALL)..." onkeyup="filterOpcodes()">
+      </div>
+      <div class="opcodes-table-wrapper">
+        <table id="opcodeTable">
+          <thead>
+            <tr>
+              <th>Mnemonic</th>
+              <th>Bytes</th>
+              <th>Operation</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>MOV Rd, Rs</td><td>1</td><td>Rd ← Rs</td><td>Copy data from register Rs to Rd</td></tr>
+            <tr><td>MVI R, data</td><td>2</td><td>R ← data</td><td>Move 8-bit immediate data into register R</td></tr>
+            <tr><td>LXI RP, data16</td><td>3</td><td>RP ← data16</td><td>Load 16-bit data into register pair</td></tr>
+            <tr><td>LDA addr</td><td>3</td><td>A ← (addr)</td><td>Load Accumulator directly from memory address</td></tr>
+            <tr><td>STA addr</td><td>3</td><td>(addr) ← A</td><td>Store Accumulator contents directly into memory address</td></tr>
+            <tr><td>ADD R</td><td>1</td><td>A ← A + R</td><td>Add register R to Accumulator</td></tr>
+            <tr><td>SUB R</td><td>1</td><td>A ← A - R</td><td>Subtract register R from Accumulator</td></tr>
+            <tr><td>INR R</td><td>1</td><td>R ← R + 1</td><td>Increment contents of register R by 1</td></tr>
+            <tr><td>DCR R</td><td>1</td><td>R ← R - 1</td><td>Decrement contents of register R by 1</td></tr>
+            <tr><td>JMP addr</td><td>3</td><td>PC ← addr</td><td>Jump unconditionally to specified 16-bit address</td></tr>
+            <tr><td>CALL addr</td><td>3</td><td>Subroutine Call</td><td>Call subroutine at specified address</td></tr>
+            <tr><td>RET</td><td>1</td><td>Return</td><td>Return from subroutine</td></tr>
+            <tr><td>HLT</td><td>1</td><td>Halt CPU</td><td>Halt processor execution</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast">
+    <span style="font-size:1.2rem;">✅</span>
+    <span id="toastMsg">Settings saved successfully!</span>
+  </div>
+
+  <script>
+    function updateFontSize(val) {
+      document.getElementById('fontSizeVal').innerText = val + 'px';
+      saveSettings();
+    }
+
+    function selectTheme(theme, el) {
+      document.querySelectorAll('.theme-option').forEach(opt => opt.classList.remove('active'));
+      el.classList.add('active');
+      showToast("Theme switched to: " + theme.toUpperCase());
+    }
+
+    function saveSettings(notify = false) {
+      if (notify) {
+        showToast("Settings applied & saved!");
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMsg').innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    function launchApp(fullscreen = false) {
+      const isFs = fullscreen || document.getElementById('fullScreenToggle').checked;
+      if (isFs) {
+        showToast("Launching GNUSim8085 in Full Screen Dark Mode...");
+        window.location.href = "Launch_FullScreen.bat";
+      } else {
+        showToast("Launching GNUSim8085 Dark Edition...");
+        window.location.href = "gnusim8085.bat";
+      }
+    }
+
+    function filterOpcodes() {
+      const query = document.getElementById('opcodeSearch').value.toLowerCase();
+      const rows = document.querySelectorAll('#opcodeTable tbody tr');
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(query) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
